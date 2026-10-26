@@ -18,13 +18,14 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-        cache: gradle
 
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+    # Setup Gradle (Official GitHub Action) ကို အသုံးပြုမယ်
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v3
 
+    # chmod +x gradlew အဆင့်ကို ဖြုတ်လိုက်ပြီး gradle ကို တိုက်ရိုက်သုံးမယ်
     - name: Build Debug APK
-      run: ./gradlew assembleDebug
+      run: gradle assembleDebug
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
