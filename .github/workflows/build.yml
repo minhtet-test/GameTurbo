@@ -19,11 +19,12 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    # Setup Gradle (Official GitHub Action) ကို အသုံးပြုမယ်
+    # Gradle Version ကို 8.4 အဖြစ် ပုံသေ သတ်မှတ်ပေးပါမည်
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v3
+      with:
+        gradle-version: '8.4'
 
-    # chmod +x gradlew အဆင့်ကို ဖြုတ်လိုက်ပြီး gradle ကို တိုက်ရိုက်သုံးမယ်
     - name: Build Debug APK
       run: gradle assembleDebug
 
